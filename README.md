@@ -1,40 +1,41 @@
-# Opensource DApp Template 
+# NFT Certification
 
-Welcome to the DApp Template project! This template is designed to help developers quickly build decentralized applications (DApps) using modern technologies like TypeScript, Wagmi, Vercel, Prisma, and Postgres. The project is structured to enable fast and scalable deployment on the Amoy Network.
+A Solidity smart contract for dynamic NFT certifications representing academic diplomas and annual performance reports.  
 
-## Tech Stack
+## Features
 
-- Frontend: Next.js + TypeScript + Wagmi (Ethereum hooks)
-- Backend: Express.js (TypeScript) + Prisma (ORM)
-- Database: PostgreSQL
-- Deployment: Vercel (Serverless)
-- Blockchain Network: Amoy Network
+- **mintDiploma:** Mint a diploma NFT.
+- **mintPerformance:** Mint a performance NFT linked to an existing diploma.
+- **updateCertification:** Update the NFT metadata.
+- **dropCertification:** Revoke (burn) an NFT.
+- Access control via a functional programming–inspired role system.
 
-## Contributing
-We welcome contributions from the community! To contribute, follow these steps:
+## Requirements
 
-## Fork the repository
+- Solidity ^0.8.17
+- Foundry (for testing and deployment)
+- OpenZeppelin Contracts
 
-### Create a new branch 
-```SH
-git checkout -b feature/my-feature
-```
-### Make your changes
+## Installation & Testing
 
-Commit your changes 
-```SH
-git commit -m 'Add my feature'
-```
+1. Install Foundry:
+   ```bash
+   curl -L https://foundry.paradigm.xyz | bash
+   foundryup
+   ```
 
-Push to the branch 
-```SH
-git push origin feature/my-feature
-```
+2. Initialize your project and install dependencies:
+   ```bash
+   forge init
+   git clone https://github.com/OpenZeppelin/openzeppelin-contracts.git lib/openzeppelin-contracts
+   ```
 
-Open a pull request
+3. Run the tests:
+   ```bash
+   forge test
+   ```
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Support
-If you encounter any issues or have questions, feel free to open an issue in the GitHub Issues section.
+This project is licensed under the MIT License.
+```
