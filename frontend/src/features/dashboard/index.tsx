@@ -1,5 +1,8 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+import { wagmiContractConfig } from '@/abi/contract'
+import { useAccount, useReadContract } from 'wagmi'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'
 import { Search } from '@/components/search'
@@ -9,12 +12,35 @@ import { UsersDialogs } from './components/users-dialogs'
 import { UsersPrimaryButtons } from './components/users-primary-buttons'
 import { UsersTable } from './components/users-table'
 import UsersProvider from './context/users-context'
-import { certifications } from './data/certifications'
-import { Certification, certificationListSchema } from './data/users'
+import { Certification } from './data/users'
 
 export default function Certifications() {
-  // Parse la liste des certifications
-  const certificationList = certificationListSchema.parse(certifications)
+  const { address } = useAccount()
+  const [certificationList, setCertificationList] = useState<Certification[]>(
+    []
+  )
+  const {
+    data: tokenIds,
+    isLoading,
+    error,
+  } = useReadContract({
+    address: wagmiContractConfig.address,
+    abi: wagmiContractConfig.abi,
+    functionName: 'listNFTs',
+  })
+
+  useEffect(() => {
+    if (tokenIds && Array.isArray(tokenIds)) {
+      const certifications = tokenIds.map((id: bigint) => ({
+        tokenId: Number(id),
+        owner: address || 'Unknown',
+        certificationType: 'Diploma' as 'Diploma',
+        tokenURI: '',
+        parentDiplomaId: undefined,
+      }))
+      setCertificationList(certifications)
+    }
+  }, [tokenIds, address])
 
   return (
     <UsersProvider>
@@ -40,10 +66,16 @@ export default function Certifications() {
         </div>
 
         <div className='-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0'>
-          <UsersTable<Certification>
-            data={certificationList}
-            columns={columns}
-          />
+          {isLoading ? (
+            <p>Chargement des certificats...</p>
+          ) : error ? (
+            <p className='text-red-500'>Erreur : {error.message}</p>
+          ) : (
+            <UsersTable<Certification>
+              data={certificationList}
+              columns={columns}
+            />
+          )}
         </div>
       </Main>
 
