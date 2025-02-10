@@ -13,8 +13,12 @@ import { UsersDialogs } from './components/users-dialogs'
 import { UsersPrimaryButtons } from './components/users-primary-buttons'
 import { UsersTable } from './components/users-table'
 import UsersProvider from './context/users-context'
-import { userListSchema } from './data/schema'
-import { users } from './data/users'
+import { certificationListSchema, Certification } from './data/users'
+import { certifications } from './data/certifications'
+
+export default function Certifications() {
+  // Parse la liste des certifications
+  const certificationList = certificationListSchema.parse(certifications)
 
 const Users = () => {
   // Parse user list
@@ -48,8 +52,6 @@ const Users = () => {
         <Search />
         <div className='ml-auto flex items-center space-x-4'>
           <ThemeSwitch />
-          {/* @ts-expect-error msg */}
-          <appkit-button />
         </div>
       </Header>
 
@@ -109,13 +111,14 @@ const Users = () => {
             </form>
             <h2 className='text-2xl font-bold tracking-tight'>User List</h2>
             <p className='text-muted-foreground'>
-              Manage your users and their roles here.
+              Manage the certifications and their types here.
             </p>
           </div>
           <UsersPrimaryButtons />
         </div>
+
         <div className='-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0'>
-          <UsersTable data={userList} columns={columns} />
+          <UsersTable<Certification> data={certificationList} columns={columns} />
         </div>
       </Main>
 
