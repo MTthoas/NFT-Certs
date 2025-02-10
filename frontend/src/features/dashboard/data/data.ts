@@ -1,8 +1,8 @@
 import {
+  IconAi,
   IconCash,
-  IconShield,
-  IconUsersGroup,
-  IconUserShield,
+  IconDrone,
+  IconWebhook
 } from '@tabler/icons-react'
 import { UserStatus } from './schema'
 
@@ -16,25 +16,40 @@ export const callTypes = new Map<UserStatus, string>([
   ],
 ])
 
-export const userTypes = [
+export const degreesTypes = [
   {
-    label: 'Superadmin',
-    value: 'superadmin',
-    icon: IconShield,
-  },
-  {
-    label: 'Admin',
-    value: 'admin',
-    icon: IconUserShield,
-  },
-  {
-    label: 'Manager',
-    value: 'manager',
-    icon: IconUsersGroup,
-  },
-  {
-    label: 'Cashier',
-    value: 'cashier',
+    label: 'Master - Ingénierie de la Blockchain',
+    value: 'blockchain',
     icon: IconCash,
   },
+  {
+    label: 'Master - Ingénierie en Intelligence Artificielle',
+    value: 'ia',
+    icon: IconAi,
+  },
+  {
+    label: 'Master - Ingénierie du web',
+    value: 'manager',
+    icon: IconWebhook,
+  },
+  {
+    label: 'Master - Ingénierie des systèmes embarqués',
+    value: 'embarque',
+    icon: IconDrone,
+  },
 ] as const
+
+export const degreesStatus = [
+  {
+    label: 'En cours',
+    value: 'en_cours',
+  },
+  {
+    label: 'Validé',
+    value: 'valide',
+  },
+  {
+    label: 'Refusé',
+    value: 'refuse',
+  },
+]

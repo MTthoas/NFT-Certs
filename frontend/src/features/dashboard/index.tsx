@@ -1,9 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-import { abi } from '@/abi/abi'
-import { useAccount, useWriteContract } from 'wagmi'
-import { contract_address } from '@/utils/config'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'
 import { Search } from '@/components/search'
@@ -19,29 +15,6 @@ import { Certification, certificationListSchema } from './data/users'
 export default function Certifications() {
   // Parse la liste des certifications
   const certificationList = certificationListSchema.parse(certifications)
-  // Parse user list
-  // Call useAccount hook to get the current account
-  const { address } = useAccount()
-
-  const [recipient, setRecipient] = useState('')
-  const [diplomaData, setDiplomaData] = useState({ title: '', description: '' })
-
-  const { data: hash, writeContract } = useWriteContract()
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    try {
-      writeContract({
-        address: contract_address,
-        abi: abi,
-        functionName: 'mintDiploma',
-        args: [recipient, 'url'],
-      })
-    } catch (err) {
-      console.log(err)
-      alert('Erreur lors du mint du diplôme')
-    }
-  }
 
   return (
     <UsersProvider>
@@ -49,70 +22,20 @@ export default function Certifications() {
         <Search />
         <div className='ml-auto flex items-center space-x-4'>
           <ThemeSwitch />
+          {/* @ts-expect-error msg */}
+          <appkit-button />
         </div>
       </Header>
 
       <Main>
         <div className='mb-2 flex flex-wrap items-center justify-between space-y-2'>
-          <div>
-            <form
-              onSubmit={handleSubmit}
-              style={{ maxWidth: 400, margin: '0 auto' }}
-            >
-              <div>
-                <label>
-                  Adresse du destinataire :
-                  <input
-                    type='text'
-                    value={recipient}
-                    onChange={(e) => setRecipient(e.target.value)}
-                    required
-                    style={{ width: '100%' }}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  Titre du diplôme :
-                  <input
-                    type='text'
-                    value={diplomaData.title}
-                    onChange={(e) =>
-                      setDiplomaData({ ...diplomaData, title: e.target.value })
-                    }
-                    required
-                    style={{ width: '100%' }}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  Description :
-                  <textarea
-                    value={diplomaData.description}
-                    onChange={(e) =>
-                      setDiplomaData({
-                        ...diplomaData,
-                        description: e.target.value,
-                      })
-                    }
-                    required
-                    style={{ width: '100%' }}
-                  />
-                </label>
-              </div>
-
-              <button type='submit'>{'Mint Diploma'}</button>
-            </form>
-            <h2 className='text-2xl font-bold tracking-tight'>
-              Certification List
-            </h2>
-            <p className='text-muted-foreground'>
-              Manage the certifications and their types here.
-            </p>
-          </div>
+          <h2 className='text-2xl font-bold tracking-tight'>
+            Certification List
+          </h2>
+          <p className='text-muted-foreground'>
+            Manage the certifications and their types here.
+          </p>
+          {/* </div>  */}
           <UsersPrimaryButtons />
         </div>
 
