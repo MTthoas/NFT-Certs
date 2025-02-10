@@ -23,7 +23,6 @@ export const sidebarData: SidebarData = {
           url: '/',
           icon: HomeIcon,
         },
-        { title: 'Dashboard', url: '/users' },
       ],
     }
   ],

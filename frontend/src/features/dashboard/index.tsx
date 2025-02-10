@@ -13,16 +13,13 @@ import { UsersDialogs } from './components/users-dialogs'
 import { UsersPrimaryButtons } from './components/users-primary-buttons'
 import { UsersTable } from './components/users-table'
 import UsersProvider from './context/users-context'
-import { certificationListSchema, Certification } from './data/users'
 import { certifications } from './data/certifications'
+import { Certification, certificationListSchema } from './data/users'
 
 export default function Certifications() {
   // Parse la liste des certifications
   const certificationList = certificationListSchema.parse(certifications)
-
-const Users = () => {
   // Parse user list
-  const userList = userListSchema.parse(users)
   // Call useAccount hook to get the current account
   const { address } = useAccount()
 
@@ -109,7 +106,9 @@ const Users = () => {
 
               <button type='submit'>{'Mint Diploma'}</button>
             </form>
-            <h2 className='text-2xl font-bold tracking-tight'>User List</h2>
+            <h2 className='text-2xl font-bold tracking-tight'>
+              Certification List
+            </h2>
             <p className='text-muted-foreground'>
               Manage the certifications and their types here.
             </p>
@@ -118,7 +117,10 @@ const Users = () => {
         </div>
 
         <div className='-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0'>
-          <UsersTable<Certification> data={certificationList} columns={columns} />
+          <UsersTable<Certification>
+            data={certificationList}
+            columns={columns}
+          />
         </div>
       </Main>
 
@@ -126,5 +128,3 @@ const Users = () => {
     </UsersProvider>
   )
 }
-
-export default Users
