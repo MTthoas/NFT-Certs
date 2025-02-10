@@ -1,9 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { wagmiContractConfig } from '@/abi/abi'
-import { useAccount, useWriteContract, useReadContract } from 'wagmi'
-import { contract_address } from '@/utils/config'
+import { wagmiContractConfig } from '@/abi/contract'
+import { useAccount, useReadContract } from 'wagmi'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'
 import { Search } from '@/components/search'
@@ -17,14 +16,15 @@ import { Certification } from './data/users'
 
 export default function Certifications() {
   const { address } = useAccount()
-  const [recipient, setRecipient] = useState('')
-  const [diplomaData, setDiplomaData] = useState({ title: '', description: '' })
-  const [certificationList, setCertificationList] = useState<Certification[]>([])
-
-  const { data: hash, writeContract } = useWriteContract()
-
-  const { data: tokenIds, isLoading, error } = useReadContract({
-    address: contract_address,
+  const [certificationList, setCertificationList] = useState<Certification[]>(
+    []
+  )
+  const {
+    data: tokenIds,
+    isLoading,
+    error,
+  } = useReadContract({
+    address: wagmiContractConfig.address,
     abi: wagmiContractConfig.abi,
     functionName: 'listNFTs',
   })
@@ -41,22 +41,6 @@ export default function Certifications() {
       setCertificationList(certifications)
     }
   }, [tokenIds, address])
- 
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    try {
-      writeContract({
-        address: contract_address,
-        abi: wagmiContractConfig.abi,
-        functionName: 'mintDiploma',
-        args: [recipient as '0x', 'url', "ESGI-TEST"],
-      })
-    } catch (err) {
-      console.log(err)
-      alert('Erreur lors du mint du diplôme')
-    }
-  }
 
   return (
     <UsersProvider>
@@ -71,65 +55,13 @@ export default function Certifications() {
 
       <Main>
         <div className='mb-2 flex flex-wrap items-center justify-between space-y-2'>
-          <div>
-            <form
-              onSubmit={handleSubmit}
-              style={{ maxWidth: 400, margin: '0 auto' }}
-            >
-              <div>
-                <label>
-                  Adresse du destinataire :
-                  <input
-                    type='text'
-                    value={recipient}
-                    onChange={(e) => setRecipient(e.target.value)}
-                    required
-                    style={{ width: '100%' }}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  Titre du diplôme :
-                  <input
-                    type='text'
-                    value={diplomaData.title}
-                    onChange={(e) =>
-                      setDiplomaData({ ...diplomaData, title: e.target.value })
-                    }
-                    required
-                    style={{ width: '100%' }}
-                  />
-                </label>
-              </div>
-
-              <div>
-                <label>
-                  Description :
-                  <textarea
-                    value={diplomaData.description}
-                    onChange={(e) =>
-                      setDiplomaData({
-                        ...diplomaData,
-                        description: e.target.value,
-                      })
-                    }
-                    required
-                    style={{ width: '100%' }}
-                  />
-                </label>
-              </div>
-
-              <button type='submit'>{'Mint Diploma'}</button>
-            </form>
-            <h2 className='text-2xl font-bold tracking-tight mt-8'>
-              Certification List
-            </h2>
-            <p className='text-muted-foreground'>
-              Manage the certifications and their types here.
-            </p>
-          </div>
+          <h2 className='text-2xl font-bold tracking-tight'>
+            Certification List
+          </h2>
+          <p className='text-muted-foreground'>
+            Manage the certifications and their types here.
+          </p>
+          {/* </div>  */}
           <UsersPrimaryButtons />
         </div>
 
@@ -139,7 +71,10 @@ export default function Certifications() {
           ) : error ? (
             <p className='text-red-500'>Erreur : {error.message}</p>
           ) : (
-            <UsersTable<Certification> data={certificationList} columns={columns} />
+            <UsersTable<Certification>
+              data={certificationList}
+              columns={columns}
+            />
           )}
         </div>
       </Main>

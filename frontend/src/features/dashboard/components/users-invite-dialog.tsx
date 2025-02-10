@@ -13,18 +13,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { SelectDropdown } from '@/components/select-dropdown'
-import { userTypes } from '../data/data'
 
 const formSchema = z.object({
   email: z
@@ -78,7 +66,7 @@ export function UsersInviteDialog({ open, onOpenChange }: Props) {
             invitation. Assign a role to define their access level.
           </DialogDescription>
         </DialogHeader>
-        <Form {...form}>
+        {/* <Form {...form}>
           <form
             id='user-invite-form'
             onSubmit={form.handleSubmit(onSubmit)}
@@ -138,7 +126,7 @@ export function UsersInviteDialog({ open, onOpenChange }: Props) {
               )}
             />
           </form>
-        </Form>
+        </Form> */}
         <DialogFooter className='gap-y-2'>
           <DialogClose asChild>
             <Button variant='outline'>Cancel</Button>
