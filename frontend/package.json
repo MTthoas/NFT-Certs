@@ -51,6 +51,7 @@
     "cmdk": "1.0.4",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
+    "ethers": "^6.13.5",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.468.0",
     "pinata": "^1.10.1",
