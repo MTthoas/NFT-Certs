@@ -1,19 +1,19 @@
+'use client'
+
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { AxiosError } from 'axios'
-import {
-  QueryCache,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
-import { useAuthStore } from '@/stores/authStore'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { createRouter, RouterProvider } from '@tanstack/react-router'
+import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
+import { arbitrum, mainnet, sepolia } from '@reown/appkit/networks'
+import { createAppKit } from '@reown/appkit/react'
+import { WagmiProvider } from 'wagmi'
 import { handleServerError } from '@/utils/handle-server-error'
 import { toast } from '@/hooks/use-toast'
 import { FontProvider } from './context/font-context'
 import { ThemeProvider } from './context/theme-context'
 import './index.css'
-// Generated Routes
 import { routeTree } from './routeTree.gen'
 
 const queryClient = new QueryClient({
@@ -49,31 +49,38 @@ const queryClient = new QueryClient({
       },
     },
   },
-  queryCache: new QueryCache({
-    onError: (error) => {
-      if (error instanceof AxiosError) {
-        if (error.response?.status === 401) {
-          toast({
-            variant: 'destructive',
-            title: 'Session expired!',
-          })
-          useAuthStore.getState().auth.reset()
-          const redirect = `${router.history.location.href}`
-          router.navigate({ to: '/sign-in', search: { redirect } })
-        }
-        if (error.response?.status === 500) {
-          toast({
-            variant: 'destructive',
-            title: 'Internal Server Error!',
-          })
-          router.navigate({ to: '/500' })
-        }
-        if (error.response?.status === 403) {
-          // router.navigate("/forbidden", { replace: true });
-        }
-      }
-    },
-  }),
+})
+
+// 1. Get projectId from https://cloud.reown.com
+const projectId = 'cb9a3d203b35a979abb8e955f45cdab1'
+
+// 2. Create a metadata object - optional
+const metadata = {
+  name: 'avax2',
+  description: 'AppKit Example',
+  url: 'https://reown.com/appkit', // origin must match your domain & subdomain
+  icons: ['https://assets.reown.com/reown-profile-pic.png'],
+}
+
+// 3. Set the networks
+const networks = [mainnet, arbitrum, sepolia]
+
+// 4. Create Wagmi Adapter
+const wagmiAdapter = new WagmiAdapter({
+  networks,
+  projectId,
+  ssr: true,
+})
+
+// 5. Create modal
+createAppKit({
+  adapters: [wagmiAdapter],
+  networks,
+  projectId,
+  metadata,
+  features: {
+    analytics: true, // Optional - defaults to your Cloud configuration
+  },
 })
 
 // Create a new router instance
@@ -95,15 +102,18 @@ declare module '@tanstack/react-router' {
 const rootElement = document.getElementById('root')!
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
+
   root.render(
     <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider defaultTheme='light' storageKey='vite-ui-theme'>
-          <FontProvider>
-            <RouterProvider router={router} />
-          </FontProvider>
-        </ThemeProvider>
-      </QueryClientProvider>
+      <WagmiProvider config={wagmiAdapter.wagmiConfig}>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider defaultTheme='light' storageKey='vite-ui-theme'>
+            <FontProvider>
+              <RouterProvider router={router} />
+            </FontProvider>
+          </ThemeProvider>
+        </QueryClientProvider>
+      </WagmiProvider>
     </StrictMode>
   )
 }

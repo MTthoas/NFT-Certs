@@ -13,13 +13,14 @@ import { users } from './data/users'
 export default function Users() {
   // Parse user list
   const userList = userListSchema.parse(users)
-
   return (
     <UsersProvider>
       <Header fixed>
         <Search />
         <div className='ml-auto flex items-center space-x-4'>
           <ThemeSwitch />
+          {/* @ts-expect-error msg */}
+          <appkit-button />
         </div>
       </Header>
 

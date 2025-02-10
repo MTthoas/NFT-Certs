@@ -94,9 +94,10 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
                 </FormItem>
               )}
             />
-            <Button className='mt-2' disabled={isLoading}>
-              Login
-            </Button>
+            <div>
+              {/* @ts-expect-error msg */}
+              <appkit-button />
+            </div>
 
             <div className='relative my-2'>
               <div className='absolute inset-0 flex items-center'>
