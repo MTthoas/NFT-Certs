@@ -143,25 +143,47 @@ contract NFT_Certification is ERC721URIStorage, AccessControlEnumerable {
     }
 
     /**
-     * @notice Permet à un profil autorisé de lister tous les tokenIds existants.
-     * @return tokens Tableau des tokenIds existants (non révoqués).
-     */
-    function listNFTs() external view returns (uint256[] memory tokens) {
+    * @notice Liste tous les NFTs existants (non révoqués) avec leurs URIs et leur type.
+    * @return tokens Tableau des tokenIds existants.
+    * @return tokenURIs Tableau des URI associées aux métadonnées des tokens.
+    * @return tokenTypes Tableau des types de NFT (Diploma ou Performance).
+    */
+    function getListNfts() external view returns (
+        uint256[] memory tokens,
+        string[] memory tokenURIs,
+        string[] memory tokenTypes
+    ) {
         uint256 count = 0;
+        // Comptabiliser les tokens existants
         for (uint256 i = 1; i <= _tokenIds; i++) {
             if (tokenExists[i]) {
                 count++;
             }
         }
+
         tokens = new uint256[](count);
+        tokenURIs = new string[](count);
+        tokenTypes = new string[](count); 
+
         uint256 index = 0;
+        // Récupérer les tokenIds, leurs URI et leurs types
         for (uint256 i = 1; i <= _tokenIds; i++) {
             if (tokenExists[i]) {
                 tokens[index] = i;
+                tokenURIs[index] = tokenURI(i);
+                
+                // 🔹 Déterminer le type de NFT
+                if (certificationTypes[i] == CertificationType.Diploma) {
+                    tokenTypes[index] = "Diploma";
+                } else {
+                    tokenTypes[index] = "Performance";
+                }
+
                 index++;
             }
         }
     }
+
 
     /**
      * @notice Portail public de vérification d'un certificat académique.
