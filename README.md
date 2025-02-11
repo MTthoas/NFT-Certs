@@ -100,6 +100,79 @@ if (nfts) {
 
 ---
 
+### **1️⃣ How to use Avalanche L1 with Avlanache-CLI ? **
+
+1. First, you need to install the Avalanche-CLI. You can find the installation instructions [here](https://build.avax.network/docs/tooling/get-avalanche-cli).
+
+2. In your console : 
+```bash
+avalanche blockchain create <name>
+```
+
+3. Then on your terminal, select : 
+* Subnet-EVM
+* Proof of Authority
+* Select the admin's wallet of your blockchain
+* I don't want to use default values
+* Use latest release version
+* Set the Chain Id
+* Set the token symbol
+* Define a custom allocation
+* Add an address to the initial token allocation
+* Paste the Admin Address
+* Confirm and finalize the initial token allocation and approuve it
+* Yes, I want to be able to mint additionnal the native token (Native Minter Precompile On)
+* Add an address for a role to the allow list
+* Now, you can setup all addresses that you want to be Admin, Manager or just Activated
+* When it's done, confirm allow list and approuve it
+* Low block size
+* No, I prefer to have constant gas fees
+* Yes, I want the transaction fees to be burned 
+* Yes
+
+Now, your blockchain is created, if you want to see the details, you can run : 
+```bash
+avalanche blockchain describe <name>
+```
+
+4. To deploy the blockchain locally, you can run : 
+```bash
+avalanche blockchain deploy <name> --local
+```
+
+Now wait and you will see the address of your blockchain on your local network. 
+
+5. Stop and start the network with : 
+```bash
+avalanche network stop
+avalanche network start
+```
+
+COOL ! Now you have your own blockchain on Avalanche L1.
+
+### **2️⃣ How to deploy a smart contract on Avalanche L1 ?**
+
+To deploy your smart contract, you need to have a .sol file and a script to deploy it.
+
+When you have your .sol file, you can deploy it with : 
+```bash
+forge script <path/deployScript> --rpc-url <rpc_blockchain_local> --broadcast -vvvv
+```
+
+You will have you contract address on your local blockchain.
+
+### **3️⃣ How to interact with your smart contract on Avalanche L1 ?**
+
+First of all, you need to copy the out of your smart contract on /contracts/out/<ContractName>/<ContractName>.json
+
+Paste it on /frontend/src/abi/<ContractName>.ts
+
+After this, you need to configure your provider to your local blockchain
+
+And now, you can use wagmi to interact with your smart contract !
+
+---
+
 ## **📜 License**
 Ce projet est sous **MIT License**.
 
