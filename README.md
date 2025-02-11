@@ -100,7 +100,7 @@ if (nfts) {
 
 ---
 
-### **1️⃣ How to use Avalanche L1 with Avlanache-CLI ? **
+### **1️⃣ How to use Avalanche L1 with Avlanache-CLI ?**
 
 1. First, you need to install the Avalanche-CLI. You can find the installation instructions [here](https://build.avax.network/docs/tooling/get-avalanche-cli).
 
