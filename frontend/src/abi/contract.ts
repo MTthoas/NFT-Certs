@@ -1,59 +1,33 @@
 export const wagmiContractConfig = {
-    address: '0x66b8214775a51DE1fFaCf0bE6f3dB8b7aac2b35e',
+    address: '0xcC64FC5a3c299271baD11ea3e027e57A199e6f14',
     abi: [
-        {
-            "type": "constructor",
-            "inputs": [],
-            "stateMutability": "nonpayable"
-        },
+        { "type": "constructor", "inputs": [], "stateMutability": "nonpayable" },
         {
             "type": "function",
             "name": "ACTIVATED_ROLE",
             "inputs": [],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "bytes32", "internalType": "bytes32" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "DEFAULT_ADMIN_ROLE",
             "inputs": [],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "bytes32", "internalType": "bytes32" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "MANAGER_ROLE",
             "inputs": [],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "bytes32", "internalType": "bytes32" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "addActivatedAccount",
             "inputs": [
-                {
-                    "name": "account",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "account", "type": "address", "internalType": "address" }
             ],
             "outputs": [],
             "stateMutability": "nonpayable"
@@ -62,16 +36,8 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "approve",
             "inputs": [
-                {
-                    "name": "to",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
+                { "name": "to", "type": "address", "internalType": "address" },
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
             ],
             "outputs": [],
             "stateMutability": "nonpayable"
@@ -80,31 +46,15 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "balanceOf",
             "inputs": [
-                {
-                    "name": "owner",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "owner", "type": "address", "internalType": "address" }
             ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "certificationTypes",
-            "inputs": [
-                {
-                    "name": "",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
-            ],
+            "inputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
             "outputs": [
                 {
                     "name": "",
@@ -119,11 +69,7 @@ export const wagmiContractConfig = {
             "name": "getActivated",
             "inputs": [],
             "outputs": [
-                {
-                    "name": "",
-                    "type": "address[]",
-                    "internalType": "address[]"
-                }
+                { "name": "", "type": "address[]", "internalType": "address[]" }
             ],
             "stateMutability": "view"
         },
@@ -132,11 +78,7 @@ export const wagmiContractConfig = {
             "name": "getAdmins",
             "inputs": [],
             "outputs": [
-                {
-                    "name": "",
-                    "type": "address[]",
-                    "internalType": "address[]"
-                }
+                { "name": "", "type": "address[]", "internalType": "address[]" }
             ],
             "stateMutability": "view"
         },
@@ -144,18 +86,18 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "getApproved",
             "inputs": [
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
             ],
+            "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
+            "stateMutability": "view"
+        },
+        {
+            "type": "function",
+            "name": "getListNfts",
+            "inputs": [],
             "outputs": [
-                {
-                    "name": "",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "tokens", "type": "uint256[]", "internalType": "uint256[]" },
+                { "name": "tokenURIs", "type": "string[]", "internalType": "string[]" }
             ],
             "stateMutability": "view"
         },
@@ -164,11 +106,7 @@ export const wagmiContractConfig = {
             "name": "getManagers",
             "inputs": [],
             "outputs": [
-                {
-                    "name": "",
-                    "type": "address[]",
-                    "internalType": "address[]"
-                }
+                { "name": "", "type": "address[]", "internalType": "address[]" }
             ],
             "stateMutability": "view"
         },
@@ -176,80 +114,38 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "getRoleAdmin",
             "inputs": [
-                {
-                    "name": "role",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                }
+                { "name": "role", "type": "bytes32", "internalType": "bytes32" }
             ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "bytes32", "internalType": "bytes32" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "getRoleMember",
             "inputs": [
-                {
-                    "name": "role",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                },
-                {
-                    "name": "index",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
+                { "name": "role", "type": "bytes32", "internalType": "bytes32" },
+                { "name": "index", "type": "uint256", "internalType": "uint256" }
             ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "address",
-                    "internalType": "address"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "getRoleMemberCount",
             "inputs": [
-                {
-                    "name": "role",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                }
+                { "name": "role", "type": "bytes32", "internalType": "bytes32" }
             ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "getRoleMembers",
             "inputs": [
-                {
-                    "name": "role",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                }
+                { "name": "role", "type": "bytes32", "internalType": "bytes32" }
             ],
             "outputs": [
-                {
-                    "name": "",
-                    "type": "address[]",
-                    "internalType": "address[]"
-                }
+                { "name": "", "type": "address[]", "internalType": "address[]" }
             ],
             "stateMutability": "view"
         },
@@ -257,18 +153,10 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "getUserRoles",
             "inputs": [
-                {
-                    "name": "user",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "user", "type": "address", "internalType": "address" }
             ],
             "outputs": [
-                {
-                    "name": "",
-                    "type": "string[]",
-                    "internalType": "string[]"
-                }
+                { "name": "", "type": "string[]", "internalType": "string[]" }
             ],
             "stateMutability": "view"
         },
@@ -276,16 +164,8 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "grantRole",
             "inputs": [
-                {
-                    "name": "role",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                },
-                {
-                    "name": "account",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "role", "type": "bytes32", "internalType": "bytes32" },
+                { "name": "account", "type": "address", "internalType": "address" }
             ],
             "outputs": [],
             "stateMutability": "nonpayable"
@@ -294,181 +174,76 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "hasRole",
             "inputs": [
-                {
-                    "name": "role",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                },
-                {
-                    "name": "account",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "role", "type": "bytes32", "internalType": "bytes32" },
+                { "name": "account", "type": "address", "internalType": "address" }
             ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "bool",
-                    "internalType": "bool"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "isApprovedForAll",
             "inputs": [
-                {
-                    "name": "owner",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "operator",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "owner", "type": "address", "internalType": "address" },
+                { "name": "operator", "type": "address", "internalType": "address" }
             ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "bool",
-                    "internalType": "bool"
-                }
-            ],
-            "stateMutability": "view"
-        },
-        {
-            "type": "function",
-            "name": "listNFTs",
-            "inputs": [],
-            "outputs": [
-                {
-                    "name": "tokens",
-                    "type": "uint256[]",
-                    "internalType": "uint256[]"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "mintDiploma",
             "inputs": [
-                {
-                    "name": "recipient",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "tokenURI",
-                    "type": "string",
-                    "internalType": "string"
-                },
-                {
-                    "name": "studentId",
-                    "type": "string",
-                    "internalType": "string"
-                }
+                { "name": "recipient", "type": "address", "internalType": "address" },
+                { "name": "tokenURI", "type": "string", "internalType": "string" },
+                { "name": "studentId", "type": "string", "internalType": "string" }
             ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
             "stateMutability": "nonpayable"
         },
         {
             "type": "function",
             "name": "mintPerformance",
             "inputs": [
-                {
-                    "name": "recipient",
-                    "type": "address",
-                    "internalType": "address"
-                },
+                { "name": "recipient", "type": "address", "internalType": "address" },
                 {
                     "name": "parentDiplomaId",
                     "type": "uint256",
                     "internalType": "uint256"
                 },
-                {
-                    "name": "tokenURI",
-                    "type": "string",
-                    "internalType": "string"
-                }
+                { "name": "tokenURI", "type": "string", "internalType": "string" }
             ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
             "stateMutability": "nonpayable"
         },
         {
             "type": "function",
             "name": "name",
             "inputs": [],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "string",
-                    "internalType": "string"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "string", "internalType": "string" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "ownerOf",
             "inputs": [
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
             ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "address",
-                    "internalType": "address"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "address", "internalType": "address" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "performanceToDiploma",
-            "inputs": [
-                {
-                    "name": "",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
-            ],
+            "inputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+            "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "renounceRole",
             "inputs": [
-                {
-                    "name": "role",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                },
+                { "name": "role", "type": "bytes32", "internalType": "bytes32" },
                 {
                     "name": "callerConfirmation",
                     "type": "address",
@@ -482,11 +257,7 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "revokeCertification",
             "inputs": [
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
             ],
             "outputs": [],
             "stateMutability": "nonpayable"
@@ -495,16 +266,8 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "revokeRole",
             "inputs": [
-                {
-                    "name": "role",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                },
-                {
-                    "name": "account",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "role", "type": "bytes32", "internalType": "bytes32" },
+                { "name": "account", "type": "address", "internalType": "address" }
             ],
             "outputs": [],
             "stateMutability": "nonpayable"
@@ -513,21 +276,9 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "safeTransferFrom",
             "inputs": [
-                {
-                    "name": "from",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "to",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
+                { "name": "from", "type": "address", "internalType": "address" },
+                { "name": "to", "type": "address", "internalType": "address" },
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
             ],
             "outputs": [],
             "stateMutability": "nonpayable"
@@ -536,26 +287,10 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "safeTransferFrom",
             "inputs": [
-                {
-                    "name": "from",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "to",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                },
-                {
-                    "name": "data",
-                    "type": "bytes",
-                    "internalType": "bytes"
-                }
+                { "name": "from", "type": "address", "internalType": "address" },
+                { "name": "to", "type": "address", "internalType": "address" },
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" },
+                { "name": "data", "type": "bytes", "internalType": "bytes" }
             ],
             "outputs": [],
             "stateMutability": "nonpayable"
@@ -564,16 +299,8 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "setApprovalForAll",
             "inputs": [
-                {
-                    "name": "operator",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "approved",
-                    "type": "bool",
-                    "internalType": "bool"
-                }
+                { "name": "operator", "type": "address", "internalType": "address" },
+                { "name": "approved", "type": "bool", "internalType": "bool" }
             ],
             "outputs": [],
             "stateMutability": "nonpayable"
@@ -582,110 +309,48 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "supportsInterface",
             "inputs": [
-                {
-                    "name": "interfaceId",
-                    "type": "bytes4",
-                    "internalType": "bytes4"
-                }
+                { "name": "interfaceId", "type": "bytes4", "internalType": "bytes4" }
             ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "bool",
-                    "internalType": "bool"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "symbol",
             "inputs": [],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "string",
-                    "internalType": "string"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "string", "internalType": "string" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "tokenExists",
-            "inputs": [
-                {
-                    "name": "",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "bool",
-                    "internalType": "bool"
-                }
-            ],
+            "inputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+            "outputs": [{ "name": "", "type": "bool", "internalType": "bool" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "tokenStudentId",
-            "inputs": [
-                {
-                    "name": "",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
-            ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "string",
-                    "internalType": "string"
-                }
-            ],
+            "inputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+            "outputs": [{ "name": "", "type": "string", "internalType": "string" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "tokenURI",
             "inputs": [
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
             ],
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "string",
-                    "internalType": "string"
-                }
-            ],
+            "outputs": [{ "name": "", "type": "string", "internalType": "string" }],
             "stateMutability": "view"
         },
         {
             "type": "function",
             "name": "transferFrom",
             "inputs": [
-                {
-                    "name": "from",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "to",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
+                { "name": "from", "type": "address", "internalType": "address" },
+                { "name": "to", "type": "address", "internalType": "address" },
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
             ],
             "outputs": [],
             "stateMutability": "nonpayable"
@@ -694,16 +359,8 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "updateCertification",
             "inputs": [
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                },
-                {
-                    "name": "newTokenURI",
-                    "type": "string",
-                    "internalType": "string"
-                }
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" },
+                { "name": "newTokenURI", "type": "string", "internalType": "string" }
             ],
             "outputs": [],
             "stateMutability": "nonpayable"
@@ -712,11 +369,7 @@ export const wagmiContractConfig = {
             "type": "function",
             "name": "verifyCertificate",
             "inputs": [
-                {
-                    "name": "studentId",
-                    "type": "string",
-                    "internalType": "string"
-                }
+                { "name": "studentId", "type": "string", "internalType": "string" }
             ],
             "outputs": [
                 {
@@ -724,11 +377,7 @@ export const wagmiContractConfig = {
                     "type": "uint256[]",
                     "internalType": "uint256[]"
                 },
-                {
-                    "name": "tokenURIs",
-                    "type": "string[]",
-                    "internalType": "string[]"
-                }
+                { "name": "tokenURIs", "type": "string[]", "internalType": "string[]" }
             ],
             "stateMutability": "view"
         },
@@ -1002,128 +651,72 @@ export const wagmiContractConfig = {
             ],
             "anonymous": false
         },
-        {
-            "type": "error",
-            "name": "AccessControlBadConfirmation",
-            "inputs": []
-        },
+        { "type": "error", "name": "AccessControlBadConfirmation", "inputs": [] },
         {
             "type": "error",
             "name": "AccessControlUnauthorizedAccount",
             "inputs": [
-                {
-                    "name": "account",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "neededRole",
-                    "type": "bytes32",
-                    "internalType": "bytes32"
-                }
+                { "name": "account", "type": "address", "internalType": "address" },
+                { "name": "neededRole", "type": "bytes32", "internalType": "bytes32" }
             ]
         },
         {
             "type": "error",
             "name": "ERC721IncorrectOwner",
             "inputs": [
-                {
-                    "name": "sender",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                },
-                {
-                    "name": "owner",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "sender", "type": "address", "internalType": "address" },
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" },
+                { "name": "owner", "type": "address", "internalType": "address" }
             ]
         },
         {
             "type": "error",
             "name": "ERC721InsufficientApproval",
             "inputs": [
-                {
-                    "name": "operator",
-                    "type": "address",
-                    "internalType": "address"
-                },
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
+                { "name": "operator", "type": "address", "internalType": "address" },
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
             ]
         },
         {
             "type": "error",
             "name": "ERC721InvalidApprover",
             "inputs": [
-                {
-                    "name": "approver",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "approver", "type": "address", "internalType": "address" }
             ]
         },
         {
             "type": "error",
             "name": "ERC721InvalidOperator",
             "inputs": [
-                {
-                    "name": "operator",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "operator", "type": "address", "internalType": "address" }
             ]
         },
         {
             "type": "error",
             "name": "ERC721InvalidOwner",
             "inputs": [
-                {
-                    "name": "owner",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "owner", "type": "address", "internalType": "address" }
             ]
         },
         {
             "type": "error",
             "name": "ERC721InvalidReceiver",
             "inputs": [
-                {
-                    "name": "receiver",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "receiver", "type": "address", "internalType": "address" }
             ]
         },
         {
             "type": "error",
             "name": "ERC721InvalidSender",
             "inputs": [
-                {
-                    "name": "sender",
-                    "type": "address",
-                    "internalType": "address"
-                }
+                { "name": "sender", "type": "address", "internalType": "address" }
             ]
         },
         {
             "type": "error",
             "name": "ERC721NonexistentToken",
             "inputs": [
-                {
-                    "name": "tokenId",
-                    "type": "uint256",
-                    "internalType": "uint256"
-                }
+                { "name": "tokenId", "type": "uint256", "internalType": "uint256" }
             ]
         }
     ]

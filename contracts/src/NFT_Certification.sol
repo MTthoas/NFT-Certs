@@ -143,21 +143,28 @@ contract NFT_Certification is ERC721URIStorage, AccessControlEnumerable {
     }
 
     /**
-     * @notice Permet à un profil autorisé de lister tous les tokenIds existants.
-     * @return tokens Tableau des tokenIds existants (non révoqués).
-     */
-    function listNFTs() external view returns (uint256[] memory tokens) {
+    * @notice Permet de lister tous les NFTs existants (non révoqués) et de récupérer leurs tokenURIs.
+    * @return tokens Tableau des tokenIds existants.
+    * @return tokenURIs Tableau des URI associées aux métadonnées des tokens.
+    */
+    function getListNfts() external view returns (uint256[] memory tokens, string[] memory tokenURIs) {
         uint256 count = 0;
+        // Comptabiliser les tokens existants
         for (uint256 i = 1; i <= _tokenIds; i++) {
             if (tokenExists[i]) {
                 count++;
             }
         }
+        
         tokens = new uint256[](count);
+        tokenURIs = new string[](count);
+        
         uint256 index = 0;
+        // Récupérer les tokenIds et leurs URI correspondantes
         for (uint256 i = 1; i <= _tokenIds; i++) {
             if (tokenExists[i]) {
                 tokens[index] = i;
+                tokenURIs[index] = tokenURI(i);
                 index++;
             }
         }

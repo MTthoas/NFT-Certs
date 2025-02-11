@@ -21,10 +21,10 @@ contract DeployRolesScript is Script {
         // --- Étape 2 : Attribution des rôles via le compte admin ---
         vm.startBroadcast(adminPrivateKey);
             // Attribuer le rôle MANAGER au compte manager
-            nft.grantRole(nft.MANAGER_ROLE(), managerAddress);
+        nft.grantRole(nft.MANAGER_ROLE(), managerAddress);
             // Ajouter le compte activé via la fonction dédiée
-            nft.addActivatedAccount(activatedAddress);
-        vm.stopBroadcast();
+        nft.addActivatedAccount(activatedAddress);
+         vm.stopBroadcast();
 
         // --- Optionnel : Affichage des listes de rôles ---
         address[] memory admins    = nft.getAdmins();
