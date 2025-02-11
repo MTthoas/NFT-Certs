@@ -1,5 +1,3 @@
-Voici un **README mis à jour** pour inclure le **frontend**, son **dashboard admin**, et la communication avec le **smart contract**.
-
 ---
 
 # **NFT Certification - Admin Dashboard**
