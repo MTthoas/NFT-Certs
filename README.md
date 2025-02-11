@@ -46,6 +46,22 @@ pnpm run dev
 - OpenZeppelin Contracts
 - Foundry (pour le testing & le déploiement)
 
+### Coverage
+
+Suite result: ok. 16 passed; 0 failed; 0 skipped; finished in 3.81ms (23.04ms CPU time)
+
+Ran 1 test suite in 9.72ms (3.81ms CPU time): 16 tests passed, 0 failed, 0 skipped (16 total tests)
+
+```bash
+forge coverage
+```
+
+### **📌 Résultats**
+| File                      | % Lines           | % Statements      | % Branches     | % Funcs         |
+|---------------------------|-------------------|-------------------|----------------|-----------------|
+| `src/NFT_Certification.sol` | **100.00%** (108/108) | **100.00%** (112/112) | **85.00%** (17/20) | **100.00%** (14/14) |
+| **Total**                 | **100.00%** (108/108) | **100.00%** (112/112) | **85.00%** (17/20) | **100.00%** (14/14) |
+
 ### **1️⃣ Installer Foundry**
 ```bash
 curl -L https://foundry.paradigm.xyz | bash
