@@ -1,10 +1,8 @@
----
 
 # **NFT Certification - Admin Dashboard**
 
 Un **système de certification académique NFT** basé sur **Solidity** et une **application frontend** permettant aux administrateurs de gérer les diplômes et les performances académiques.
 
----
 
 ## **🛠️ Fonctionnalités du Smart Contract**
 ### **Certificats académiques dynamiques**
