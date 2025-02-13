@@ -12,8 +12,6 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
     const { setOpen, setCurrentRow } = useUsers()
 
     const handleClick = () => {
-        console.log(row) // affiche l'objet row complet
-        console.log(row.original) // affiche les données de la ligne
 
         // Par exemple, on peut stocker les données de la ligne dans le contexte
         setCurrentRow(row.original)

@@ -1,9 +1,4 @@
-import { HTMLAttributes, useState } from 'react'
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { IconBrandFacebook, IconBrandGithub } from '@tabler/icons-react'
-import { cn } from '@/lib/utils'
+import { PasswordInput } from '@/components/password-input'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -14,7 +9,12 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { PasswordInput } from '@/components/password-input'
+import { cn } from '@/lib/utils'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { IconBrandFacebook, IconBrandGithub } from '@tabler/icons-react'
+import { HTMLAttributes, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 type SignUpFormProps = HTMLAttributes<HTMLDivElement>
 
@@ -54,7 +54,6 @@ export function SignUpForm({ className, ...props }: SignUpFormProps) {
   function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true)
     // eslint-disable-next-line no-console
-    console.log(data)
 
     setTimeout(() => {
       setIsLoading(false)

@@ -9,6 +9,7 @@ import { usePinataMetadata } from '@/hooks/pinata'
 import { useEffect, useMemo, useState } from 'react'
 import {
     useAccount,
+    useChainId,
     useConnect,
     useDisconnect,
     useEnsName,
@@ -27,8 +28,7 @@ export default function Certifications() {
     const { disconnect } = useDisconnect()
     const { connect } = useConnect()
     const { data: ensName } = useEnsName({ address })
-
-    console.log(address, ensName)
+    const network = useChainId()
 
     // État local pour la liste des certifications récupérées via le contrat
     const [certificationList, setCertificationList] = useState<Certification[]>([])
@@ -38,6 +38,7 @@ export default function Certifications() {
         address: wagmiContractConfig.address,
         abi: wagmiContractConfig.abi,
         functionName: 'getListNfts',
+        chainId: 1628,
     })
 
     // Met à jour certificationList lorsque tokenIds change
@@ -59,8 +60,6 @@ export default function Certifications() {
                 return
             }
 
-            console.log('tokenIds', tokenIds)
-
             const certifications = idsArray.map((id: bigint, index: number) => ({
                 tokenId: Number(id),
                 owner: address || 'Unknown',
@@ -74,8 +73,6 @@ export default function Certifications() {
             setCertificationList(certifications)
         }
     }, [tokenIds, address])
-
-    console.log('certificationList', certificationList)
 
     // Mémorise le tableau des tokenURIs pour éviter qu'il ne soit recréé à chaque rendu
     const tokenURIs = useMemo(
@@ -109,7 +106,6 @@ export default function Certifications() {
         })
     }, [certificationList, metadataList, tokenURIs])
 
-    console.log(mergedData)
     return (
         <UsersProvider>
             <Header fixed>

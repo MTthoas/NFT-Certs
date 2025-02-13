@@ -53,8 +53,27 @@ const queryClient = new QueryClient({
 // 1. Get projectId from https://cloud.reown.com
 const projectId = 'cb9a3d203b35a979abb8e955f45cdab1'
 
+// 2 Create a network object
+const avalancheSubnetLocal = {
+    id: 1628,
+    name: "ESGIBC",
+    network: "ESGIBC",
+    nativeCurrency: {
+      decimals: 18,
+      name: "ESGI Token",
+      symbol: "ESGI",
+    },
+    rpcUrls: {
+      default: {
+        http: [
+          "http://127.0.0.1:61496/ext/bc/2k4hQAsTRL8JMZkqB3qVkaJm3TB3bZoAmJZewBb84U16UyieyL/rpc",
+        ],
+      },
+    },
+};
+
 export const config = createConfig({
-    chains: [mainnet, base],
+    chains: [avalancheSubnetLocal],
     connectors: [
         injected(),
         walletConnect({ projectId }),
@@ -62,8 +81,7 @@ export const config = createConfig({
         safe(),
     ],
     transports: {
-        [mainnet.id]: http(),
-        [base.id]: http(),
+        [avalancheSubnetLocal.id]: http(),
     },
 })
 

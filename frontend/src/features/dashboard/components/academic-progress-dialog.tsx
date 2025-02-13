@@ -1,10 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { FormProvider, useForm } from 'react-hook-form'
 import { wagmiContractConfig } from '@/abi/contract'
-import { useWriteContract } from 'wagmi'
-import { getPinataMetadata, uploadJson2 } from '@/hooks/pinata'
+import { SelectDropdown } from '@/components/select-dropdown'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -15,7 +12,10 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { SelectDropdown } from '@/components/select-dropdown'
+import { getPinataMetadata, uploadJson2 } from '@/hooks/pinata'
+import { useState } from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
+import { useWriteContract } from 'wagmi'
 import { degreesYears } from '../data/data'
 
 interface Props {
@@ -36,16 +36,12 @@ export function AcademicProgressDialog({ open, onOpenChange, data }: Props) {
   const [program, setProgram] = useState('')
   const [comments, setComments] = useState('')
 
-  // console.log(data)
-
   const { writeContract } = useWriteContract()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('📝 Form submitted with values:', { year, ipfsCid })
 
     try {
-      console.log('📡 Fetching existing metadata from Pinata...')
       const pinata = await getPinataMetadata(data?.tokenURI)
 
       // Récupération des données actuelles

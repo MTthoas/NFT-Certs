@@ -1,13 +1,7 @@
 'use client'
 
-import { z } from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { wagmiContractConfig } from '@/abi/contract'
-import { Address } from 'viem'
-import { useWriteContract } from 'wagmi'
-import { uploadJson } from '@/hooks/pinata'
-import { toast } from '@/hooks/use-toast'
+import { SelectDropdown } from '@/components/select-dropdown'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -27,7 +21,13 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { SelectDropdown } from '@/components/select-dropdown'
+import { uploadJson } from '@/hooks/pinata'
+import { toast } from '@/hooks/use-toast'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { Address } from 'viem'
+import { useWriteContract } from 'wagmi'
+import { z } from 'zod'
 import { degreesStatus, degreesTypes } from '../data/data'
 import { User } from '../data/schema'
 
@@ -72,10 +72,8 @@ export function UsersActionDialog({
   })
 
   const { data: hash, writeContract } = useWriteContract()
-  console.log(currentRow, open, onOpenChange, bigdata)
 
   const onSubmit = async (values: UserForm) => {
-    console.log(values)
     try {
       const hash = await uploadJson({
         name: 'diploma.json',
@@ -98,7 +96,6 @@ export function UsersActionDialog({
       }
 
       const url = `https://bronze-wonderful-centipede-191.mypinata.cloud/ipfs/${hash}`
-      console.log('✅ Uploaded to IPFS:', url)
 
       writeContract({
         address: wagmiContractConfig.address,
